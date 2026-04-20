@@ -3,6 +3,11 @@ Data/
 __pycache__/
 *.py[codz]
 *$py.class
+deployment_artifacts/
+deployment_artifacts/
+.ipynb_checkpoints/
+
+*.pyc
 
 # C extensions
 *.so
