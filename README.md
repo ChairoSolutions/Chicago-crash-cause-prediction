@@ -14,7 +14,7 @@ Predicting primary contributory causes of traffic crashes using machine learning
 ## REPRODUCIBILITY
 This is a guide on how to reproduce the analysis and model result found in this repository. Please follow the steps below
 1. Clone the repository 
-First clone this project to your local machine using gitbash:
+First clone this repository to your local machine using gitbash:
 git clone https://github.com/ChairoSolutions/Chicago-crash-cause-prediction/tree/master
 2. Setup an environment
 The project requires python 3.17 version. Use a virtual environment to avoid library errors
@@ -98,15 +98,33 @@ These datasets are related through a common key: `CRASH_RECORD_ID`.
 
 ### Unit of Analysis
 The primary unit of analysis will be at the crash level. Therefore, vehicle-level and person-level data will need to be aggregated to align with the crash-level target variable.
+
 ### Target Refinement
 The unable to determine category and not applicable categories were excluded to ensure the model focuses on actionable causes
+
 ### Data Leakage Prevention 
 We identified and excluded the post crash features, high cardinality features, IDs, rare features , weak features and severity indicators to ensure the model reflects on prediction scenarios
+
 ### Feature Selection
 We selected the following features for succesful modelling and evaluation: 
-- 
-- 
-- 
+- Age
+- Sex
+- Lighting condition- impacts visibility. The model uses thie to weigh the driver vision. Wha it during the day or was it at night, was it bare darkness or there were street lights
+- Weather condition - was it raining, was it snowing , was it foggy, was it windy. All these increases the likelihood of a crash. Was the driver following too closely or was he/she speeding 
+- Alignment - Describes the road. Is it straight or bending or narrowing or meandering. These are more likely to be associated with crah causes
+- Traffic way type -This helps the model underatand the the flow of traffice and the common conflict point i.e is it a one way, two way etc
+- Posted speed limit - This ia s critical feature. It allows the model see if the primary cause of accidents is exceeding the speed limit
+- Vehicle type
+- Physical condition - describes the state of the driver. Were they fatigued, ill, impared, driving under thr influence
+- Driver action - This are the errors made by the driver to cause the crash, is it overtaking, overlapping etc
+- Traffic control device - 
+- Device condition
+- Maneuver - Describes what the vehicle was doing eg: u-turn or improper reversing etc
+- Driver condition - it provides a baseline for the drivers readiness
+- Driver vision - Explains what obscured the drivers view. What is a building, windshield condition or other vehicles. It tells the model why the driver took the wrong action
+- Crash month
+- Crash day of the week
+
 ### Data Structure Inspection
 
 Before performing exploratory analysis, we examine the structure of each dataset, including:
