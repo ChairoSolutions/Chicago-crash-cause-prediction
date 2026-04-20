@@ -6,17 +6,17 @@ Predicting primary contributory causes of traffic crashes using machine learning
 - Non- technical deliverables - contains powerpoint.pdf and tableau interactive dashboard
 - images folder- where the images used in readme and the notebook are stored
 - Readme.md
+- gitignore
 - Requirements.txt
-
 
 
 ## REPRODUCIBILITY
 This is a guide on how to reproduce the analysis and model result found in this repository. Please follow the steps below
 1. Clone the repository 
-First clone this project to your local machine using gitbash
+First clone this project to your local machine using gitbash:
 git clone https://github.com/ChairoSolutions/Chicago-crash-cause-prediction/tree/master
 2. Setup an environment
-The project requires python. Use a virtual environment to avoid library errors
+The project requires python 3.17 version. Use a virtual environment to avoid library errors
 The requirements.txt contains the specific versions of our libraries
 pip install -r requirements.txt
 3. Libraries 
@@ -79,11 +79,9 @@ The success of the model will be evaluated using:
 - Risk of data leakage: Some variables may contain information that is only known after the crash occurs (e.g., injury severity, damage estimates). These must be carefully excluded to avoid data leakage and ensure the model reflects real-world prediction scenarios.
 
 # DATA UNDERSTANDING
+The datasets we are using have been obtained from Chicago Data Portal. It contains Traffic crashes, vehicle and driver/passenger data from January 2024 to present. It is particulary useful because it includes all the factors influencing the crashes. It allows us to analyze patterns in traffic accidents.
 
-### Unit of Analysis
-The primary unit of analysis will be at the crash level. Therefore, vehicle-level and person-level data will need to be aggregated to align with the crash-level target variable.
-
-## Dataset Description
+### Dataset Description
 This project uses three datasets provided by the City of Chicago:
 
 - **Crashes Dataset**: Contains information about each traffic crash (e.g., time, location, weather conditions, road conditions).
@@ -92,13 +90,23 @@ This project uses three datasets provided by the City of Chicago:
 
 These datasets are related through a common key: `CRASH_RECORD_ID`.
 
-## Objective of This Section
-- Load the datasets
-- Understand their structure
-- Identify key columns
-- Perform initial exploration
 
-## Data Structure Inspection
+## Methodology
+
+## Data Preparation
+
+### Unit of Analysis
+The primary unit of analysis will be at the crash level. Therefore, vehicle-level and person-level data will need to be aggregated to align with the crash-level target variable.
+### Target Refinement
+The unable to determine category and not applicable categories were excluded to ensure the model focuses on actionable causes
+### Data Leakage Prevention 
+We identified and excluded the post crash features, high cardinality features, IDs, rare features , weak features and severity indicators to ensure the model reflects on prediction scenarios
+### Feature Selection
+We selected the following features for succesful modelling and evaluation: 
+- 
+- 
+- 
+### Data Structure Inspection
 
 Before performing exploratory analysis, we examine the structure of each dataset, including:
 - Column names and meanings
@@ -107,3 +115,22 @@ Before performing exploratory analysis, we examine the structure of each dataset
 - Summary statistics
 
 This helps identify data quality issues and informs preprocessing decisions.
+
+### Key Observations from Data Structure Inspection
+
+- The crashes dataset contains 251,295 records with 47 features, representing crash-level information such as weather, lighting, road conditions, and crash outcomes.
+- The vehicles dataset contains 511,366 records with 70 features, indicating that multiple vehicles can be involved in a single crash.
+- The people dataset contains 550,849 records with 28 features, showing that multiple individuals are associated with each crash.
+
+- The datasets are linked using the `CRASH_RECORD_ID`, confirming a relational structure.
+
+- The crashes dataset contains a mix of numerical and categorical variables, with several columns having significant missing values.
+
+- The vehicles dataset has many columns related to commercial vehicles and hazardous materials, most of which have very high missing values and may not be useful for this analysis.
+
+- The people dataset includes detailed driver and passenger information, but also contains several columns with substantial missing data.
+
+- Columns with extremely high missing values (e.g., hazardous material indicators) will be evaluated for removal due to limited informational value.
+
+These observations will guide feature selection, aggregation, and data cleaning in subsequent steps.
+
