@@ -2,11 +2,12 @@
 Predicting primary contributory causes of traffic crashes using machine learning.
 ## REPOSITORY STRUCTURE
 - Data folder - where the datasets are stored
-- Notebook - containing the ipynb notebook
-- Non- technical deliverables - contains powerpoint.pdf and tableau interactive dashboard
+- Notebook folder - containing the ipynb notebook
+- Non- technical deliverables folder - contains powerpoint.pdf and tableau interactive dashboard
 - images folder- where the images used in readme and the notebook are stored
 - Readme.md
 - gitignore
+- gitattributes
 - Requirements.txt
 
 
