@@ -153,3 +153,126 @@ This helps identify data quality issues and informs preprocessing decisions.
 
 These observations will guide feature selection, aggregation, and data cleaning in subsequent steps.
 
+## EXPLORATORY DATA ANALYSIS (EDA)
+
+Exploratory Data Analysis was conducted to uncover patterns, relationships, and anomalies within the datasets. This step is crucial in understanding how different factors influence crash causes and in guiding feature engineering decisions.
+
+### Key EDA Activities
+- Univariate Analysis
+Examined the distribution of individual features such as weather conditions, lighting conditions, and driver age.
+- Bivariate Analysis
+Analyzed relationships between features and the target variable (PRIM_CONTRIBUTORY_CAUSE) to identify strong predictors.
+- Multivariate Analysis
+Explored interactions between multiple variables to understand combined effects on crash causes.
+- Handling Missing Values
+Columns with excessive missing values were dropped
+Remaining missing values were imputed using appropriate strategies (mode for categorical, median for numerical)
+- Class Imbalance Check
+The target variable showed significant imbalance, with certain crash causes dominating the dataset. This informed the choice of evaluation metrics and modeling techniques.
+
+## Key Insights from EDA
+Poor lighting and adverse weather conditions are strongly associated with certain crash causes.
+Driver-related factors (e.g., actions, condition, vision) are among the most influential predictors.
+Speed limits and traffic control devices play a critical role in determining crash patterns.
+Certain categories in the target variable are underrepresented, requiring careful handling during modeling.
+
+## FEATURE ENGINEERING
+
+Feature engineering was applied to improve model performance and ensure meaningful input data.
+![alt text](image-1.png)
+### Techniques Used
+
+- Aggregation
+Vehicle-level and person-level data were aggregated to crash-level using CRASH_RECORD_ID.
+![alt text](image-3.png)
+- Encoding
+- - Categorical variables were encoded using:
+One-Hot Encoding for nominal variables
+- - Scaling
+Numerical features were normalized using standard scaling.
+- Feature Reduction
+We removed:
+- - High cardinality features
+![alt text](image-2.png)
+- - Redundant features
+- - Post-crash variables (to prevent data leakage)
+
+## MODELING
+
+Multiple machine learning models were trained and evaluated to identify the best performing approach.
+Models Used:
+- Logistic Regression (Baseline)
+- Decision Tree Classifier
+- Random Forest Classifier
+- XGBoost Classifier
+
+## PIPELINES
+
+A machine learning pipeline was implemented to ensure reproducibility and consistency:
+- Train-test split
+- Preprocessing (encoding + scaling)
+- Model training
+- Hyperparameter tuning using GridSearchCV
+
+
+## EVALUATION
+
+Model performance was evaluated using multiple metrics to ensure robustness.
+- Evaluation Metrics:
+- Macro F1-Score - balances performance across all classes
+- Accuracy - overall correctness
+- Confusion Matrix - detailed error analysis
+
+Results Summary
+
+Ensemble model (Random Forest) outperformed baseline models.
+Random forest provided the best balance between precision and recall across multiple classes.
+Simpler models struggled with minority classes due to class imbalance.
+
+
+
+## DEPLOYMENT
+After selecting the Tuned Random Forest as the final model, we save the following artifacts for deployment:
+
+- Trained model (`.joblib`)
+- Training feature columns
+- Label encoder
+- Selected feature list
+
+This ensures that the model can be reused outside the notebook in a production setting.
+
+Stakeholders can input conditions (e.g., weather, lighting, driver behavior) and receive predicted crash causes, enabling proactive decision-making.
+
+## CONCLUSION
+
+This project successfully demonstrates how machine learning can be used to predict the primary contributory causes of traffic crashes.
+
+Key Takeaways
+Driver behavior is the most significant contributor to crash causes
+Environmental factors (weather, lighting) also play a major role
+Ensemble models provide the best predictive performance
+
+## RECOMMENDATIONS
+
+Based on the findings, the following actions are recommended:
+
+- Enhance Road Safety Campaigns
+- Focus on driver behavior (speeding, distractions, impairment)
+- Improve Infrastructure (intersection points)
+- Improve on lighting in poorly lit areas
+- Strict policy implementation 
+- Enforce stricter traffic regulations in high-risk zones
+- Data Collection improvements methods
+
+## FUTURE INSIGHTS
+- Incorporate real-time data for dynamic predictions
+- Expand the model to predict crash severity in addition to cause
+- Deploy as a full web application with API integration
+
+
+PROJECT DONE BY:
+1. Brian Chairo
+2. Frankline Kipkemboi
+3. Grace Waweru
+4. Sylvia Mokindo
+5. Mercy Apondi
