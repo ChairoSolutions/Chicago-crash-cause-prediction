@@ -14,10 +14,11 @@ Predicting primary contributory causes of traffic crashes using machine learning
 ## REPRODUCIBILITY
 This is a guide on how to reproduce the analysis and model result found in this repository. Please follow the steps below
 1. Clone the repository 
+First clone this project to your local machine using gitbash
 First clone this repository to your local machine using gitbash:
 git clone https://github.com/ChairoSolutions/Chicago-crash-cause-prediction/tree/master
 2. Setup an environment
-The project requires python 3.17 version. Use a virtual environment to avoid library errors
+The project requires python. Use a virtual environment to avoid library errors
 The requirements.txt contains the specific versions of our libraries
 pip install -r requirements.txt
 3. Libraries 
@@ -28,7 +29,7 @@ The following are python libraries that are required for this analysis
 - Visualization - matpotlib and seaborn
 - Deployment - Joblib
 4. Data
-Our data is sourced from the Chicago Data Portal. You should download the three csv datasets and place them in the data folder. The link attached has Traffic crashes, Vehicles and people datasets
+Our data is sourced from the Chicago Data Portal. You should download the three csv datasets and place them in the data folder. The link attached has Traffic crashes, Vehicles and people
 https://drive.google.com/drive/folders/1L_vsEDUWbOdqdFWgnFicctt0_qf8XXB9?usp=drive_link
 5. Target Variable 
 We used PRIM_CONTRIBUTORY_CAUSE 
@@ -44,8 +45,6 @@ We used PRIM_CONTRIBUTORY_CAUSE
 6. Modeling- Building different models 
 7. Evaluation- Building a reusable code for evaluation and using different metrics to identify which model performs better on both training and testing 
 8. Deployment - Deploting our model for our stake holders
-9. Conclusion and Recommendations
-
 
 # BUSINESS UNDERSTANDING
 Chicago has been experiencing an uplift in traffic accidents. The city aims to eliminate fatalities but the data collected is very biased due to multiple post crash occurences. The project aims to develop a machine learning model that predicts the primary contributory cause of traffic crashes in Chicago, enabling stakeholders to identify high-risk conditions and design targeted interventions to improve road safety.
@@ -62,7 +61,7 @@ Chicago has been experiencing an uplift in traffic accidents. The city aims to e
 - Policy Makers → implement data-driven regulations to reduce high-risk crash scenarios
 
 ## Analytical Approach
-This problem is a **multi-class classification task**, where the target variable is:
+This problem is framed as a **multi-class classification task**, where the target variable is:
 
 PRIM_CONTRIBUTORY_CAUSE
 
