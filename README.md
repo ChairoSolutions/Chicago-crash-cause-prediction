@@ -9,32 +9,48 @@ Predicting primary contributory causes of traffic crashes using machine learning
 - gitignore
 - gitattributes
 - Requirements.txt
+- Tableau interactive dashboard: https://public.tableau.com/app/profile/grace.waweru/viz/Tableaudashboard_17767855045990/Dashboard1?publish=yes
 
+## Reproducibility
 
-## REPRODUCIBILITY
-This is a guide on how to reproduce the analysis and model result found in this repository. Please follow the steps below
-1. Clone the repository 
-First clone this project to your local machine using gitbash
-First clone this repository to your local machine using gitbash:
-git clone https://github.com/ChairoSolutions/Chicago-crash-cause-prediction/tree/master
-2. Setup an environment
-The project requires python. Use a virtual environment to avoid library errors
-The requirements.txt contains the specific versions of our libraries
+To reproduce this project, follow the steps below.
+
+### 1. Clone the repository
+
+```bash
+git clone <repo-url>
+cd Chicago-crash-cause-prediction
+
+###  2. Create and activate the environment
+```bash
+conda create -n crash-env python=3.8 -y
+conda activate crash-env
 pip install -r requirements.txt
-3. Libraries 
-The following are python libraries that are required for this analysis
-- Loading and exploring the datasets - Pandas, numpy and scipy
-- Machine learning and evaluation - scikitlearn 
-- Interpretability - Shap
-- Visualization - matpotlib and seaborn
-- Deployment - Joblib
-4. Data
-Our data is sourced from the Chicago Data Portal. You should download the three csv datasets and place them in the data folder. The link attached has Traffic crashes, Vehicles and people
-https://drive.google.com/drive/folders/1L_vsEDUWbOdqdFWgnFicctt0_qf8XXB9?usp=drive_link
-5. Target Variable 
-We used PRIM_CONTRIBUTORY_CAUSE 
- 
 
+### 3. Add the data files
+Chicago-crash-cause-prediction/
+│
+├── Data/
+│   └── Raw/
+│       ├── Traffic_Crashes.csv
+│       ├── vehicle_data.csv
+│       └── passenger_driver.csv
+│
+├── Notebook/
+│   └── index.ipynb
+│
+├── README.md
+└── requirements.txt
+
+### 4. Run the notebook
+Notebook/index.ipynb
+
+### 5. Expected outputs
+- Aggregated crash-level modeling dataset
+- Model evaluation metrics
+- Confusion matrices
+- Feature importance plots
+- SHAP interpretability plots
 
 ## PROJECT FLOW
 1. Business Understanding - Problem statement, goal, objectives, identifying our stakeholders
@@ -264,12 +280,13 @@ Based on the findings, the following actions are recommended:
 - Data Collection improvements methods
 
 ## FUTURE INSIGHTS
+
 - Incorporate real-time data for dynamic predictions
 - Expand the model to predict crash severity in addition to cause
 - Deploy as a full web application with API integration
 
-
 PROJECT DONE BY:
+
 1. Brian Chairo
 2. Frankline Kipkemboi
 3. Grace Waweru
