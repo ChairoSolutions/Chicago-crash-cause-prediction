@@ -9,6 +9,7 @@ Predicting primary contributory causes of traffic crashes using machine learning
 - gitignore
 - gitattributes
 - Requirements.txt
+- Interactive dashboard link: https://public.tableau.com/app/profile/grace.waweru/viz/Tableaudashboard_17767855045990/Dashboard1?publish=yes
 
 
 ## REPRODUCIBILITY
@@ -228,7 +229,7 @@ Ensemble model (Random Forest) outperformed baseline models.
 Random forest provided the best balance between precision and recall across multiple classes.
 Simpler models struggled with minority classes due to class imbalance.
 
-
+Interactive dashboard: https://public.tableau.com/app/profile/grace.waweru/viz/Tableaudashboard_17767855045990/Dashboard1?publish=yes
 
 ## DEPLOYMENT
 After selecting the Tuned Random Forest as the final model, we save the following artifacts for deployment:
