@@ -3,8 +3,9 @@ Data/
 __pycache__/
 *.py[codz]
 *$py.class
-deployment_artifacts/
-deployment_artifacts/
+deployment_artifacts/*
+!deployment_artifacts/
+!deployment_artifacts/model.joblib
 .ipynb_checkpoints/
 
 *.pyc
