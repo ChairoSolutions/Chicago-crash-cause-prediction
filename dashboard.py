@@ -115,8 +115,13 @@ def render_dashboard():
 
         with chart_placeholder.container():
             st.subheader("Most Frequent Predicted Causes")
-            cause_counts = history_df["predicted_cause"].value_counts()
-            st.bar_chart(cause_counts)
+            cause_counts = (
+                history_df["predicted_cause"]
+                .value_counts()
+                .reset_index()
+            )
+            cause_counts.columns = ["Predicted Cause", "Count"]
+            st.dataframe(cause_counts, use_container_width=True, hide_index=True)
     else:
         with latest_placeholder.container():
             st.info("Run the simulation to see live model predictions here.")
